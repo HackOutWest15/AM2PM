@@ -7,16 +7,32 @@ document.querySelector('a.navback').addEventListener('click', function() {
     document.querySelector('#artistview').classList.add('hiddenright');
 });
 
+document.addEventListener('keydown', function(e) {
+    if(!document.getElementById('swipeview').classList.contains('hiddenleft')) {
+        if(e.which === 37 ) {
+            if(currentArtist < data.length) {
+                setArtist(++currentArtist);
+            }
+        } else if(e.which === 39) {
+            liked.push({'id': data[currentArtist-1].name});
+            localStorage.setItem('liked', JSON.stringify(liked));
+            console.log(JSON.stringify(liked));
+
+            if(currentArtist < data.length) {
+                setArtist(++currentArtist);
+            }
+        }
+    }
+});
+
 function requestedResponse () {
     data = JSON.parse(this.responseText);
     localStorage.setItem('data', this.responseText);
-    setArtist();
+    setArtist(currentArtist);
 }
 
-function setStuff() {
+function setArtist(cur) {
     if(data.length === 0) return;
-
-    cur = Math.floor(Math.random() * data.length) + 1;
 
     var els = document.querySelectorAll('.totalartistsnum');
     [].forEach.call(els, function(el) {
@@ -40,36 +56,49 @@ function setStuff() {
 
     els = document.querySelectorAll('.artist.card .photo');
     [].forEach.call(els, function(el) {
-        el.style.backgroundImage = "url('"+data[cur-1].image_url+"')";
+        if(typeof data[cur-1].image_url !== 'undefined') {
+            el.style.backgroundImage = "url('"+data[cur-1].image_url+"')";
+        }
     });
 
-    /*
-    // track.name, track.preview_url, track.album.name track.album.image_url
-    // https://p.scdn.co/mp3-preview/c3a9cbf983b8b76fbc07e0807fc5918957caa8ba
+    currentTrack = 1;
+    setTrack(currentTrack);
+
+    localStorage.setItem('currentArtist', currentArtist);
+}
+
+function setTrack(cur) {
+    if(typeof data[currentArtist-1].tracks === 'undefined') {
+        return;
+    }
 
     els = document.querySelectorAll('.trackname');
     [].forEach.call(els, function(el) {
-        el.innerHTML = data[cur-1].tracks[0].name;
+        el.innerHTML = data[currentArtist-1].tracks[currentTrack-1].name;
     });
 
-    els = document.querySelectorAll('.album');
+    els = document.querySelectorAll('.albumname');
     [].forEach.call(els, function(el) {
-        el.innerHTML = data[cur-1].tracks[0].album.name;
+        el.innerHTML = data[currentArtist-1].tracks[currentTrack-1].album.name;
     });
 
     els = document.querySelectorAll('.album.card .photo');
     [].forEach.call(els, function(el) {
-        el.style.backgroundImage = "url('"+data[cur-1].tracks[0].album.image_url+"')";
+        el.style.backgroundImage = "url('"+data[currentArtist-1].tracks[currentTrack-1].album.image_url+"')";
     });
 
-    els = document.querySelector('#audioplayer');
-    */
+    audio = document.querySelector('audio');
+    audio.src = data[currentArtist-1].tracks[currentTrack-1].preview_url;
+    audio.load();
+    audio.play();
 }
 
 var data = JSON.parse(localStorage.getItem('data')) || [];
-var cur = 1;
+var liked = JSON.parse(localStorage.getItem('liked')) || [];
+var currentArtist = localStorage.getItem('currentArtist') || 1;
+var currentTrack = 1;
 
-setStuff();
+setArtist(currentArtist);
 
 var request = new XMLHttpRequest();
 request.onload = requestedResponse;

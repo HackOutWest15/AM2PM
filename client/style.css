@@ -185,6 +185,7 @@ p.nowplaying .emphasized {
 
 .card {
     margin: 20px auto;
+    display: inline-block;
 }
 .card .photo {
     height: 60vw;
