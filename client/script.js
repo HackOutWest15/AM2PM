@@ -1,12 +1,11 @@
-document.querySelector('a.artist.card').addEventListener('click', function() {
+/*document.querySelector('a.artist.card').addEventListener('click', function() {
     document.querySelector('#swipeview').classList.add('hiddenleft');
     document.querySelector('#artistview').classList.remove('hiddenright');
-});
+});*/
 document.querySelector('a.navback').addEventListener('click', function() {
     document.querySelector('#swipeview').classList.remove('hiddenleft');
     document.querySelector('#artistview').classList.add('hiddenright');
 });
-
 document.addEventListener('keydown', function(e) {
     if(!document.getElementById('swipeview').classList.contains('hiddenleft')) {
         if(e.which === 37 ) {
@@ -103,5 +102,19 @@ setArtist(currentArtist);
 var request = new XMLHttpRequest();
 request.onload = requestedResponse;
 request.open('get', 'http://10.47.12.157:5000/artists', true);
-//request.open('get', 'data.json', true);
 request.send();
+
+$(function() {
+    $('.draggable').draggable({revert: 'invalid', revertDuration: 200});
+
+    /*$( "#droppable" ).droppable({
+        activeClass: "ui-state-default",
+        hoverClass: "ui-state-hover",
+        drop: function( event, ui ) {
+            $( this )
+            .addClass( "ui-state-highlight" )
+            .find( "p" )
+            .html( "Dropped!" );
+        }
+    });*/
+});

@@ -113,7 +113,7 @@ header.withnav {
     padding-top: 5px;
 
     background-color: #FFF;
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid #DDD;
 
     text-align: left;
 }
@@ -184,8 +184,23 @@ p.nowplaying .emphasized {
 }
 
 .card {
-    margin: 20px auto;
+    padding: 5px;
+    margin: 15px auto;
+
     display: inline-block;
+    background: #FFF;
+
+    border: 1px solid #FFF;
+    border-bottom: 3px solid #FFF;
+    border-radius: 3px;
+    
+    transition: border-color .15s, border-bottom-color .15s ;
+}
+.card:hover {
+    border-color: #DDD;
+    border-bottom-color: #BBB;
+
+    transition: border-color .15s, border-bottom-color .15s ;
 }
 .card .photo {
     height: 60vw;
