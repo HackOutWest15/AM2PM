@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" type="text/css" href="font.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="apple-touch-icon" href="icon.png">
+    <link href="splash.png" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <title>Wild Out West</title>
+</head>
+<body>
+    <audio autoplay="true" src="http://www.vorbis.com/music/Epoq-Lepidoptera.ogg">
+    <div id="splash">
+        <img src="logotype_white.png">
+    </div>
+    <div id="swipeview" class="view">
+        <header>
+            <div class="headerblock">
+                <p class="preheader">You're going to</p>
+                <h1>Way Out West</h1>
+            </div>
+            <hr>
+        </header>
+        <section class="main">
+            <p class="firstinfo">
+                and so are <span class="totalartistsnum">234</span> artists,<br>
+                just start swiping!
+            </p>
+            <h2><span class="currentartistnum">1</span> out of <span class="totalartistsnum">234</span></h2>
+            <a class="artist card">
+                <div class="photo"></div>
+                <p class="artistname">Beck</p>
+            </a>
+        </section>
+        <footer>
+            <a class="button black">Get schedule</a>
+        </footer>
+    </div>
+    <div id="artistview" class="view hiddenright">
+        <header class="withnav">
+            <div class="navbar">
+                <a class="navback">Back</a>
+            </div>
+            <div class="headerblock">
+                <h1 class="artistname">Beck</h1>
+            </div>
+            <hr>
+        </header>
+        <section class="main">
+            <p class="nowplaying">currently playing: <span class="emphasized trackname">Loser</span></p>
+            <p class="nowplaying">from: <span class="emphasized albumname">Mellow Gold</span></p>
+            <div class="album card">
+                <div class="photo"></div>
+            </div>
+            <p>● ○ ○</p>
+        </section>
+        <footer>
+            <a target="_blank" class="button black artisturl" href="https://open.spotify.com/artist/3vbKDsSS70ZX9D2OcvbZmS"><img src="spoticircle.png">Artist page</a>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

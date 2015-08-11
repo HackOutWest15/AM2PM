@@ -1,0 +1,295 @@
+html, body {
+    font-weight: 700;
+    font-size: 14pt;
+
+    text-align: center;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+audio {
+    display: none;
+}
+
+h1, h2 {
+    font-family: 'Estilo Pro';
+    line-height: .9;
+}
+
+p, a {
+    font-family: 'Spotify Circular Text', Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    -webkit-tap-highlight-color: transparent;
+}
+
+hr {
+    border: 0;
+    border-bottom: 7pt solid #000;
+    width: 90%;
+    margin: 15px auto;
+}
+
+/* SPLASH */
+#splash {
+    position: absolute;
+    z-index: 1;
+
+    top: 0;
+    right: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url('wowbg2.png');
+    background-position: 50% 50%;
+    background-size: cover;
+
+    -webkit-animation: slideout .5s ease 2s forwards;
+            animation: slideout .5s ease 2s forwards;
+}
+#splash img {
+    width: 80%;
+    max-width: 400px;
+    margin: 25vh auto;
+}
+
+/* VIEWS*/
+
+.view {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+    transition: -webkit-transform .35s ease;
+    transition: transform .35s ease;
+}
+.view.hiddenright {
+    -webkit-transform: translate3d(100vw, 0, 0);
+            transform: translate3d(100vw, 0, 0);
+
+    transition: -webkit-transform .35s ease;
+    transition: transform .35s ease;
+}
+.view.hiddenleft {
+    -webkit-transform: translate3d(-100vw, 0, 0);
+            transform: translate3d(-100vw, 0, 0);
+
+    transition: -webkit-transform .35s ease;
+    transition: transform .35s ease;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    padding-top: 10px;
+    margin: 10px 0;
+}
+header.withnav {
+    padding-top: 52px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    padding-top: 5px;
+
+    background-color: #FFF;
+    border-bottom: 1px solid #EEE;
+
+    text-align: left;
+}
+a.navback {
+    font-size: .8em;
+    text-align: left;
+    text-transform: uppercase;
+
+    display: inline-block;
+    padding: 10px;
+}
+a.navback::before {
+    content: " ";
+
+    border-top: 3px solid #000;
+    border-left: 3px solid #000;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+}
+
+.headerblock {
+    display: inline-block;
+}
+
+p.preheader {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 2.8em;
+    letter-spacing: -4px;
+
+    margin: 0 auto;
+}
+
+/* MID AREA */
+section.main {
+    width: 100%;
+}
+
+p.firstinfo {
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2.3em;
+    margin: 0 auto;
+}
+
+p.nowplaying {
+    text-transform: lowercase;
+    font-style: italic;
+    font-size: .8em;
+
+    margin: 0 auto;
+}
+p.nowplaying .emphasized {
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: 1.4em;
+}
+
+.card {
+    margin: 20px auto;
+}
+.card .photo {
+    height: 60vw;
+    width: 60vw;
+    max-height: 360px;
+    max-width: 360px;
+
+    margin: 0 auto;
+
+    background-position: 50% 50%;
+    background-size: cover;
+
+    border: 12px solid #000;
+    border-radius: 50%;
+}
+
+.card.artist .photo {
+    background-image: url('beck.jpg');
+}
+.card.artist p {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.card.album .photo {
+    background-image: url('beckalbum.jpg?');
+}
+.card.album p {
+    font-size: .75em;
+    letter-spacing: 4px;
+}
+
+/* BOTTOM CRAP */
+
+footer {
+    width: 100%;
+}
+
+a.button {
+    display: inline-block;
+    padding: 11px 50px 9px;
+    margin: 10px auto;
+
+    cursor: pointer;
+
+    background-color: transparent;
+    color: #000;
+
+    border: 2px solid #000;
+    border-radius: 500px;
+
+    text-transform: uppercase;
+
+    transition: background-color .15s ease, color .15s ease;
+}
+a.button:hover {
+    background: #000;
+    color: #FFF;
+
+    transition: background-color .15s ease, color .15s ease;
+}
+
+a.button.black {
+    background-color: #000;
+    color: #FFF;
+}
+a.button.black img {
+    -webkit-filter: invert(100%);
+}
+
+a.button img {
+    height: 1.2em;
+    vertical-align: -15%;
+    margin-right: 10px;
+    transition: -webkit-filter .15s ease;
+}
+a.button:hover img {
+    -webkit-filter: invert(100%);
+    transition: -webkit-filter .15s ease;
+}
+
+/* ANIMATIONER E COOLT */
+
+@-webkit-keyframes slideout {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    99% {
+        -webkit-transform: translate3d(-100vw, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(-10000px, 0, 0);
+    }
+}
+
+@keyframes slideout {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+    }
+    99% {
+        -webkit-transform: translate3d(-100vw, 0, 0);
+                transform: translate3d(-100vw, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(-10000px, 0, 0);
+    }
+}
