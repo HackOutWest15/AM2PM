@@ -29,7 +29,9 @@ function receivedSchedule() {
     $('#scheduleview .main').html('');
     var shows = JSON.parse(this.responseText);
 
-    calendar_url = shows.hash;
+    calendar_url = 'http://'+serverurl+':5000/calendar/'+shows.hash+'/wow-schedule.ics';
+    document.querySelector('a.subscribe').href = calendar_url;
+
     var lastdate = new Date('1992-10-12');
     for(var i=0; i < shows.schedule.length; i++) {
         var date = new Date(shows.schedule[i].start_date);
