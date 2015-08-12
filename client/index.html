@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <link rel="apple-touch-icon" href="appiconchaos.png">
-    <linkrel="apple-touch-startup-image" href="splash.png" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" >
+    <link rel="apple-touch-startup-image" href="splash.png" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
 
     <title>AM2PM</title>
 </head>
@@ -31,9 +31,11 @@
             </p>
             <h2><span class="currentartistnum">1</span> out of <span class="totalartistsnum">234</span></h2>
             <a class="artist card">
-                <div class="photo"></div>
+                <div class="photo draggable ui-widget-content"></div>
                 <p class="artistname">Beck</p>
             </a>
+            <div class="drop no ui-widget-header"></div>
+            <div class="drop yes ui-widget-header"></div>
         </section>
         <footer>
             <a class="button black">Get schedule</a>
@@ -62,6 +64,10 @@
         </footer>
     </div>
 
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.2/fastclick.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

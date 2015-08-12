@@ -44,7 +44,7 @@ hr {
 /* SPLASH */
 #splash {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
 
     top: 0;
     right: 0;
@@ -113,7 +113,7 @@ header.withnav {
     padding-top: 5px;
 
     background-color: #FFF;
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid #DDD;
 
     text-align: left;
 }
@@ -185,6 +185,7 @@ p.nowplaying .emphasized {
 
 .card {
     margin: 20px auto;
+
     display: inline-block;
 }
 .card .photo {
@@ -200,6 +201,9 @@ p.nowplaying .emphasized {
 
     border: 12px solid #000;
     border-radius: 50%;
+
+    position: relative;
+    z-index: 2;
 }
 
 .card.artist .photo {
@@ -216,6 +220,24 @@ p.nowplaying .emphasized {
 .card.album p {
     font-size: .75em;
     letter-spacing: 4px;
+}
+
+.drop {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+
+    height: 100%;
+    width: 50%;
+
+    box-sizing: border-box;
+}
+.drop.yes {
+    right: -40%;
+}
+.drop.no {
+    left: -40%;
 }
 
 /* BOTTOM CRAP */
