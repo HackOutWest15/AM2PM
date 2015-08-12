@@ -10,7 +10,7 @@ $('a.navback').on('click', function() {
 });
 $('a.getschedule').on('click', function() {
     var request = new XMLHttpRequest();
-    request.open('POST', 'http://10.47.12.119:5000/schedule', true);
+    request.open('POST', 'http://'+serverurl+':5000/schedule', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onload = receivedSchedule;
     request.send(JSON.stringify(liked));
@@ -177,7 +177,7 @@ setArtist(currentArtist);
 if(localStorage.getItem('data') === null) {
     var request = new XMLHttpRequest();
     request.onload = requestedResponse;
-    request.open('GET', 'http://'+serverurl+':5001/artists', true);
+    request.open('GET', 'http://'+serverurl+':5000/artists', true);
     request.send();
 }
 
