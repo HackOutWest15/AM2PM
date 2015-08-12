@@ -14,8 +14,8 @@ class Database:
     def __del__(self):
         self.client.close()
 
-    def find(self, collection, args={}):
-        return list(self.db[collection].find(args, projection={"_id": False}))
+    def find(self, collection, args={}, sort=[]):
+        return list(self.db[collection].find(args, projection={"_id": False}, sort=sort))
 
     def find_one(self, collection, args={}):
         result = self.db[collection].find_one(args, projection={"_id": False})
@@ -30,8 +30,8 @@ class Database:
     # ARTISTS #
     ###########
 
-    def get_artists(self, args={}):
-        return self.find(ARTIST_COLLECTION, args)
+    def get_artists(self, args={}, sort=[]):
+        return self.find(ARTIST_COLLECTION, args, sort)
 
     def get_artist(self, args={}):
         return self.find_one(ARTIST_COLLECTION, args)

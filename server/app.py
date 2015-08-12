@@ -3,6 +3,9 @@ from database import Database
 import simplejson as json
 from errors import *
 from flask.ext.cors import CORS
+import pymongo
+import hashlib
+import validator
 
 app = Flask(__name__)
 CORS(app)
@@ -31,9 +34,30 @@ def get_artists():
 
 @app.route("/schedule", methods=["POST"])
 def generate_schedule():
-    json = request.get_json()
-    schedule = g.db.find({"name": {"$in": json}})
-    return json.dumps(schedule)
+    json_data = request.get_json(force=True)
+    print json_data
+    if json_data is not None:
+        schedule = g.db.get_artists({"name": {"$in": json_data}})
+        return json.dumps(schedule)
+    else:
+        abort(400)
+
+
+@app.route("/schedule", methods=["PUT"])
+def save_schedule():
+    schedule = request.get_json(force=True)
+    print schedule
+    if schedule is not None:
+        _hash = hashlib.md5().hexdigest()
+        g.db.insert_data("schedules", {"hash": _hash, "schedule": validator.schedule(schedule)})
+        return _hash
+    else:
+        abort(400)
+
+
+@app.route("/schedule/<_hash>")
+def get_schedule(_hash):
+    return json.dumps(g.db.find_one("schedules", {"hash": _hash})["schedule"])
 
 
 @app.route("/artists/<id>")
