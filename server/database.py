@@ -24,9 +24,7 @@ class Database:
         return dict(result)
 
     def insert_data(self, collection, data):
-        res = self.db[collection].insert_one(data)
-        del res["_id"]
-        return dict(res)
+        self.db[collection].insert_one(data)
 
     ###########
     # ARTISTS #
