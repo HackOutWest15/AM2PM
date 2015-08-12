@@ -45,7 +45,7 @@ function requestedResponse () {
     data = JSON.parse(this.responseText);
     shuffle(data);
 
-    localStorage.setItem('data', this.responseText);
+    localStorage.setItem('data', JSON.stringify(data));
     setArtist(currentArtist);
 }
 
