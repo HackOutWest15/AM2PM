@@ -168,7 +168,7 @@ var currentTrack = 1;
 var dragCheck = false;
 
 var audio = document.querySelector('audio');
-var serverurl = '10.47.12.119';
+var serverurl = '178.62.163.31';
 
 if(currentArtist > 1) { $('.firstinfo').addClass('hidden'); }
 
@@ -177,7 +177,7 @@ setArtist(currentArtist);
 if(localStorage.getItem('data') === null) {
     var request = new XMLHttpRequest();
     request.onload = requestedResponse;
-    request.open('GET', 'http://'+serverurl+':5000/artists', true);
+    request.open('GET', 'http://'+serverurl+':5001/artists', true);
     request.send();
 }
 
