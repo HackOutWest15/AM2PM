@@ -1,27 +1,12 @@
-/*document.querySelector('a.artist.card').addEventListener('click', function() {
-    document.querySelector('#swipeview').classList.add('hiddenleft');
-    document.querySelector('#artistview').classList.remove('hiddenright');
-});*/
+document.querySelector('a.artist.card').addEventListener('click', function() {
+    if(!dragCheck) {
+        document.querySelector('#swipeview').classList.add('hiddenleft');
+        document.querySelector('#artistview').classList.remove('hiddenright');
+    }
+});
 document.querySelector('a.navback').addEventListener('click', function() {
     document.querySelector('#swipeview').classList.remove('hiddenleft');
     document.querySelector('#artistview').classList.add('hiddenright');
-});
-document.addEventListener('keydown', function(e) {
-    if(!document.getElementById('swipeview').classList.contains('hiddenleft')) {
-        if(e.which === 37 ) {
-            if(currentArtist < data.length) {
-                setArtist(++currentArtist);
-            }
-        } else if(e.which === 39) {
-            liked.push({'id': data[currentArtist-1].name});
-            localStorage.setItem('liked', JSON.stringify(liked));
-            console.log(JSON.stringify(liked));
-
-            if(currentArtist < data.length) {
-                setArtist(++currentArtist);
-            }
-        }
-    }
 });
 
 function requestedResponse () {
@@ -96,25 +81,45 @@ var data = JSON.parse(localStorage.getItem('data')) || [];
 var liked = JSON.parse(localStorage.getItem('liked')) || [];
 var currentArtist = localStorage.getItem('currentArtist') || 1;
 var currentTrack = 1;
+var dragCheck = false;
 
 setArtist(currentArtist);
 
 var request = new XMLHttpRequest();
 request.onload = requestedResponse;
-request.open('get', 'http://10.47.12.157:5000/artists', true);
+request.open('get', 'http://10.47.12.119:5000/artists', true);
 request.send();
 
 $(function() {
-    $('.draggable').draggable({revert: 'invalid', revertDuration: 200});
-
-    /*$( "#droppable" ).droppable({
-        activeClass: "ui-state-default",
-        hoverClass: "ui-state-hover",
-        drop: function( event, ui ) {
-            $( this )
-            .addClass( "ui-state-highlight" )
-            .find( "p" )
-            .html( "Dropped!" );
+    $('.draggable').draggable({
+        revert: 'invalid',
+        revertDuration: 200,
+        drag: function(){
+            dragCheck = true;
+        },
+        stop: function(){
+            dragCheck = false;
         }
-    });*/
+    });
+
+    $('.drop').droppable({
+        activeClass: 'ui-state-default',
+        hoverClass: 'ui-state-hover',
+        drop: function(event, ui) {
+            if(this.classList.contains('yes')) {
+                liked.push({'id': data[currentArtist-1].name});
+                localStorage.setItem('liked', JSON.stringify(liked));
+
+                ui.draggable.removeAttr('style');
+                if(currentArtist < data.length) {
+                    setArtist(++currentArtist);
+                }
+            } else {
+                ui.draggable.removeAttr('style');
+                if(currentArtist < data.length) {
+                    setArtist(++currentArtist);
+                }
+            }
+        }
+    });
 });

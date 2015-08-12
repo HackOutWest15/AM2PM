@@ -44,7 +44,7 @@ hr {
 /* SPLASH */
 #splash {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
 
     top: 0;
     right: 0;
@@ -184,23 +184,9 @@ p.nowplaying .emphasized {
 }
 
 .card {
-    padding: 5px;
-    margin: 15px auto;
+    margin: 20px auto;
 
     display: inline-block;
-    background: #FFF;
-
-    border: 1px solid #FFF;
-    border-bottom: 3px solid #FFF;
-    border-radius: 3px;
-    
-    transition: border-color .15s, border-bottom-color .15s ;
-}
-.card:hover {
-    border-color: #DDD;
-    border-bottom-color: #BBB;
-
-    transition: border-color .15s, border-bottom-color .15s ;
 }
 .card .photo {
     height: 60vw;
@@ -215,6 +201,9 @@ p.nowplaying .emphasized {
 
     border: 12px solid #000;
     border-radius: 50%;
+
+    position: relative;
+    z-index: 2;
 }
 
 .card.artist .photo {
@@ -231,6 +220,24 @@ p.nowplaying .emphasized {
 .card.album p {
     font-size: .75em;
     letter-spacing: 4px;
+}
+
+.drop {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+
+    height: 100%;
+    width: 50%;
+
+    box-sizing: border-box;
+}
+.drop.yes {
+    right: -40%;
+}
+.drop.no {
+    left: -40%;
 }
 
 /* BOTTOM CRAP */
