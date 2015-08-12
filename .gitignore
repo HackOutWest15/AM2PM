@@ -1,5 +1,9 @@
 # Created by https://www.gitignore.io
 
+### AM2PM ##
+
+data-extraction
+
 ### OSX ###
 .DS_Store
 .AppleDouble
