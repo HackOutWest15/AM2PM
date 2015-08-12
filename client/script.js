@@ -36,7 +36,7 @@ function receivedSchedule() {
             $('#scheduleview .main').append('<div class="datemarker"><p>'+days[date.getDay()]+'</p></div>');
         }
 
-        $('#scheduleview .main').append('<div class="concert"><p>'+shows[i].name+'<br>'+shows[i].venue+' '+shows[i].start_time+'</p></div>');
+        $('#scheduleview .main').append('<div class="concert"><p>'+shows[i].name+'<br>'+shows[i].venue+' '+shows[i].start_time+'&mdash;'+shows[i].end_time+'</p></div>');
     }
     document.querySelector('#scheduleview').classList.remove('hiddenbottom');
 }
