@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" type="text/css" href="font.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="apple-touch-icon" href="appiconchaos.png">
+    <link rel="apple-touch-startup-image" href="splash.png" media="(device-width: 375px) and (device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
+
+    <title>AM2PM</title>
+</head>
+<body>
+    <audio autoplay="true" src="" loop></audio><!-- https://p.scdn.co/mp3-preview/c3a9cbf983b8b76fbc07e0807fc5918957caa8ba -->
+    <div id="splash">
+        <img src="logotype_white.png">
+    </div>
+    <div id="swipeview" class="view">
+        <header>
+            <div class="headerblock">
+                <p class="preheader">You're going to</p>
+                <h1>Way Out West</h1>
+            </div>
+            <hr>
+        </header>
+        <section class="main">
+            <p class="firstinfo">
+                and so are <span class="totalartistsnum">a bunch</span> artists,<br>
+                just start swiping!
+            </p>
+            <h2><span class="currentartistnum">1</span> out of <span class="totalartistsnum">a bunch</span></h2>
+            <a class="artist card">
+                <div class="photo draggable ui-widget-content"></div>
+                <p class="artistname">Artist</p>
+            </a>
+            <div class="drop no ui-widget-header"></div>
+            <div class="drop yes ui-widget-header"></div>
+            <div class="badge hidden invisible"></div>
+        </section>
+        <footer>
+            <a class="button black getschedule">Get schedule</a>
+        </footer>
+    </div>
+    <div id="artistview" class="view hiddenright">
+        <header class="withnav">
+            <div class="navbar">
+                <a class="navback">Back</a>
+            </div>
+            <div class="headerblock">
+                <h1 class="artistname">Artist</h1>
+            </div>
+            <hr>
+        </header>
+        <section class="main">
+            <p class="nowplaying">currently playing: <span class="emphasized trackname">a Track</span></p>
+            <p class="nowplaying">from: <span class="emphasized albumname">an Album</span></p>
+            <div class="album card">
+                <div class="photo"></div>
+            </div>
+            <!-- <p class="dots">● ○ ○</p> -->
+        </section>
+        <footer>
+            <a target="_blank" class="button black artisturl" href=""><img src="spoticircle.png">Artist page</a>
+        </footer>
+    </div>
+    <div id="scheduleview" class="view hiddenbottom">
+        <header>
+            <div class="headerblock">
+                <h1>Your schedule</h1>
+            </div>
+            <hr>
+        </header>
+        <section class="main">
+        </section>
+        <footer>
+            <a target="_blank" class="button black" href="">Export</a>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.2/fastclick.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
