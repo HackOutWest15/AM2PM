@@ -10,7 +10,11 @@ html, body {
     padding: 0;
 
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+body {
+    box-sizing: border-box;
 }
 
 audio {
@@ -44,7 +48,7 @@ hr {
 /* SPLASH */
 #splash {
     position: absolute;
-    z-index: 3;
+    z-index: 10;
 
     top: 0;
     right: 0;
@@ -85,12 +89,26 @@ hr {
     transition: -webkit-transform .35s ease;
     transition: transform .35s ease;
 }
+.view.hiddenbottom {
+    -webkit-transform: translate3d(0, 100vh, 0);
+            transform: translate3d(0, 100vh, 0);
+
+    transition: -webkit-transform .35s ease;
+    transition: transform .35s ease;
+}
 .view.hiddenleft {
     -webkit-transform: translate3d(-100vw, 0, 0);
             transform: translate3d(-100vw, 0, 0);
 
     transition: -webkit-transform .35s ease;
     transition: transform .35s ease;
+}
+
+#scheduleview {
+    z-index: 5;
+    background: #FFF;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* HEADER */
@@ -163,6 +181,13 @@ section.main {
 
 p.firstinfo {
     line-height: 1.2;
+    max-height: 300px;
+}
+p.firstinfo.hidden {
+    max-height: 0;
+    opacity: 0;
+
+    transition: opacity .35s ease, max-height .35s ease;
 }
 
 h2 {
@@ -187,6 +212,14 @@ p.nowplaying .emphasized {
     margin: 20px auto;
 
     display: inline-block;
+
+    opacity: 1;
+    transition: opacity .35s ease;
+}
+.card.hidden {
+    opacity: 0;
+
+    transition: opacity .35s ease;
 }
 .card .photo {
     height: 60vw;
@@ -224,7 +257,7 @@ p.nowplaying .emphasized {
 
 .drop {
     position: fixed;
-    z-index: 1;
+    z-index: -1;
     top: 0;
     bottom: 0;
 
@@ -235,9 +268,66 @@ p.nowplaying .emphasized {
 }
 .drop.yes {
     right: -40%;
+
+    transition: background-color .35s ease;
 }
 .drop.no {
     left: -40%;
+
+    transition: background-color .35s ease;
+}
+.drop.yes.ui-state-hover {
+    background-color: #50B9A9;
+    transition: background-color .35s ease;
+}
+.drop.no.ui-state-hover {
+    background-color: #D24491;
+    transition: background-color .35s ease;
+}
+
+.badge {
+    position: absolute;
+    z-index: 3;
+    margin: auto;
+    top: 7%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 50%;
+    max-width: 200px;
+
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    opacity: 1;
+    transition: opacity .35s ease;
+}
+.badge.hidden {
+    opacity: 0;
+
+    transition: opacity .35s ease;
+}
+.badge.invisible {
+    visibility: hidden;
+}
+
+.datemarker p, .concert p {
+    text-align: left;
+    margin: 0;
+}
+.datemarker, .concert {
+    max-width: 360px;
+    margin: 5px auto;
+    padding: 5px 20px;
+}
+.datemarker {
+    background-color: #CCC;
+    text-transform: uppercase;
+}
+.concert {
+    background-color: rgba(80, 185, 169, 0.2);
 }
 
 /* BOTTOM CRAP */
