@@ -15,6 +15,9 @@ $('a.getschedule').on('click', function() {
     request.onload = receivedSchedule;
     request.send(JSON.stringify(liked));
 });
+$('a.dropbox').on('click', function() {
+    Dropbox.save(calendar_url, 'My Way Out West lineup.ics', {});
+});
 
 function shuffle(o){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -25,10 +28,12 @@ function receivedSchedule() {
     audio.pause();
     $('#scheduleview .main').html('');
     var shows = JSON.parse(this.responseText);
+
+    calendar_url = shows.hash;
     var lastdate = new Date('1992-10-12');
-    for(var i=0; i < shows.length; i++) {
-        var date = new Date(shows[i].start_date);
-        if(parseInt(shows[i].start_time.substr(0,2)) < 8) {
+    for(var i=0; i < shows.schedule.length; i++) {
+        var date = new Date(shows.schedule[i].start_date);
+        if(parseInt(shows.schedule[i].start_time.substr(0,2)) < 8) {
             date.setDate(date.getDate()-1);
         }
         if(date > lastdate) {
@@ -36,7 +41,7 @@ function receivedSchedule() {
             $('#scheduleview .main').append('<div class="datemarker"><p>'+days[date.getDay()]+'</p></div>');
         }
 
-        $('#scheduleview .main').append('<div class="concert"><p>'+shows[i].name+'<br>'+shows[i].venue+' '+shows[i].start_time+'&mdash;'+shows[i].end_time+'</p></div>');
+        $('#scheduleview .main').append('<div class="concert"><p>'+shows.schedule[i].name+'<br>'+shows.schedule[i].venue+' '+shows.schedule[i].start_time+'&mdash;'+shows.schedule[i].end_time+'</p></div>');
     }
     document.querySelector('#scheduleview').classList.remove('hiddenbottom');
 }
@@ -166,9 +171,9 @@ var liked = JSON.parse(localStorage.getItem('liked')) || [];
 var currentArtist = localStorage.getItem('currentArtist') || 1;
 var currentTrack = 1;
 var dragCheck = false;
-
 var audio = document.querySelector('audio');
 var serverurl = '178.62.163.31';
+var calendar_url;
 
 if(currentArtist > 1) { $('.firstinfo').addClass('hidden'); }
 

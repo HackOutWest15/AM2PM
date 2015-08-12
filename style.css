@@ -368,6 +368,15 @@ a.button.black img {
     -webkit-filter: invert(100%);
 }
 
+a.button.dropbox {
+    background-color: #007EE5;
+    border-color: #007EE5;
+    color: #FFF;
+}
+a.button.dropbox:hover img {
+    -webkit-filter: invert(0%);
+}
+
 a.button img {
     height: 1.2em;
     vertical-align: -15%;
