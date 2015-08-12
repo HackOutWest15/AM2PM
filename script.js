@@ -17,6 +17,7 @@ $('a.getschedule').on('click', function() {
 });
 $('a.dropbox').on('click', function() {
     Dropbox.save(calendar_url, 'My Way Out West lineup.ics', {});
+    return false;
 });
 
 function shuffle(o){
