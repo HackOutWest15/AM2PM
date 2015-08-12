@@ -1,4 +1,4 @@
-from flask import Flask, g, abort
+from flask import Flask, g, abort, request
 from database import Database
 import simplejson as json
 from errors import *
@@ -27,6 +27,13 @@ def home():
 @app.route("/artists")
 def get_artists():
     return json.dumps(g.db.get_artists())
+
+
+@app.route("/schedule", methods=["POST"])
+def generate_schedule():
+    json = request.get_json()
+    schedule = g.db.find({"name": {"$in": json}})
+    return json.dumps(schedule)
 
 
 @app.route("/artists/<id>")
